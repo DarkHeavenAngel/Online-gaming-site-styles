@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список ігор</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>Список ігор</h2>
+    <button id="loadGames">Завантажити ігри</button>
+
+    <table id="gamesTable" style="display:none;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Назва</th>
+                <th>Жанр</th>
+                <th>Опис</th>
+                <th>Ціна</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        $('#loadGames').on('click', function() {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/games/',
+                method: 'GET',
+                success: function(data) {
+                    let table = $('#gamesTable');
+                    let tbody = table.find('tbody');
+                    tbody.empty();
+                    data.forEach(game => {
+                        tbody.append(`
+                            <tr>
+                                <td>${game.id ?? ''}</td>
+                                <td>${game.title ?? ''}</td>
+                                <td>${game.genre ?? ''}</td>
+                                <td>${game.description ?? ''}</td>
+                                <td>${game.price ?? ''}</td>
+                            </tr>
+                        `);
+                    });
+                    table.show();
+                },
+                error: function() {
+                    alert('Не вдалося отримати дані про ігри');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
