@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<body onload="updateNav(); redirectIfLoggedIn();">
+
+<header>
+  <nav>
+    <a href="public.html">Public Page</a>
+    <a href="private.html">Private Page</a>
+    <a href="login.html" id="loginBtn">Login</a>
+    <span id="userSpan"></span>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<h1>Login</h1>
+
+<div id="loginError"></div>
+
+<form onsubmit="event.preventDefault(); loginUser();">
+  <label for="loginUsername">Username:</label>
+  <input type="text" id="loginUsername" placeholder="Username" required>
+
+  <label for="loginPassword">Password:</label>
+  <input type="password" id="loginPassword" placeholder="Password" required>
+
+  <button type="submit">Login</button>
+</form>
+
+<p>
+  Don’t have an account?
+  <button onclick="window.location.href='register.html'">Go to Register</button>
+</p>
+
+</body>
+</html>

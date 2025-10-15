@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Private Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body onload="updateNav(); protectPrivatePage()">
+  <header>
+    <nav>
+      <a href="public.html">Public Page</a>
+      <a href="private.html">Private Page</a>
+      <a href="login.html" id="loginBtn">Login</a>
+      <span id="userSpan"></span>
+      <button id="logoutBtn" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <h1>Private Page</h1>
+  <p>This page is accessible only to logged-in users.</p>
+
+</body>
+</html>
