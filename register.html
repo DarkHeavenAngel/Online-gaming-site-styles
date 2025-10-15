@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<body onload="updateNav()">
+<header>
+  <nav>
+    <a href="public.html">Public Page</a>
+    <a href="private.html">Private Page</a>
+    <a href="login.html" id="loginBtn">Login</a>
+    <span id="userSpan"></span>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<h1>Register</h1>
+
+<div id="errorMessages"></div>
+
+<form onsubmit="event.preventDefault(); registerUser();">
+  <label for="regUsername">Username:</label>
+  <input type="text" id="regUsername" placeholder="Username" required>
+
+  <label for="regFirstName">First name (optional):</label>
+  <input type="text" id="regFirstName" placeholder="First name">
+
+  <label for="regLastName">Last name (optional):</label>
+  <input type="text" id="regLastName" placeholder="Last name">
+
+  <label for="regEmail">Email:</label>
+  <input type="email" id="regEmail" placeholder="Email" required>
+
+  <label for="regPassword">Password:</label>
+  <input type="password" id="regPassword" placeholder="Password" required>
+
+  <label for="regPasswordCheck">Confirm password:</label>
+  <input type="password" id="regPasswordCheck" placeholder="Confirm password" required>
+
+  <button type="submit">Register</button>
+</form>
+
+<p>
+  Already have an account?
+  <button onclick="window.location.href='login.html'">Go to Login</button>
+</p>
+
+</body>
+</html>
